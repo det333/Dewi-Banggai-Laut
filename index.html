@@ -16,35 +16,35 @@
     .overlay p { margin:0; font-size:14px; line-height:1.4; }
     .footer { position:absolute; bottom:15px; right:20px; background:rgba(0,0,0,0.4);
       padding:6px 12px; border-radius:8px; color:#fff; font-size:12px; z-index:2; }
-    .button { display:inline-block; margin-top:10px; padding:6px 12px; border-radius:6px;
-      background:#ffdd57; color:#000; cursor:pointer; font-weight:bold; font-size:13px; }
     @keyframes fadeIn { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
   </style>
 </head>
 <body>
 
+  <!-- Overlay Info Destinasi -->
   <div class="overlay">
     <h1>🌊 DEWI Laut - Banggai Laut</h1>
     <p>
       Selamat datang di Banggai Laut, surga bahari Sulawesi Tengah 🌴.<br>
-      Nikmati keindahan Pantai Lambangan Pauno dan destinasi lainnya.<br>
-      Video ini aman dan bebas hak cipta, siap dijelajahi dalam VR 360°.
+      Jelajahi Pantai Lambangan Pauno dan destinasi menakjubkan lainnya.<br>
+      Video ini aman, bebas hak cipta, dan bisa dinikmati di desktop & mobile.
     </p>
-    <div class="button" onclick="alert('Selamat menikmati tur virtual DEWI Laut!')">
-      🚀 Mulai Tur VR 360°
-    </div>
   </div>
 
+  <!-- Footer Lokasi -->
   <div class="footer">📍 Luwuk Banggai, Sulawesi Tengah</div>
 
+  <!-- A-Frame VR 360° -->
   <a-scene>
     <a-assets>
-      <!-- Pakai video lokal LPauno.mp4 -->
+      <!-- Video lokal LPauno.mp4 -->
       <video id="pantaiVideo" src="assets/LPauno.mp4" autoplay loop muted playsinline webkit-playsinline></video>
     </a-assets>
 
+    <!-- Sphere 360° pakai video -->
     <a-videosphere src="#pantaiVideo"></a-videosphere>
 
+    <!-- Kamera dengan kontrol look-around -->
     <a-entity camera look-controls position="0 1.6 0"></a-entity>
   </a-scene>
 
