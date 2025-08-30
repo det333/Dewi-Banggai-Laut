@@ -1,23 +1,87 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="utf-8">
-    <title>Wisata VR 360 - Pantai Lambangan Pauno</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- A-Frame -->
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  </head>
-  <body>
-    <a-scene>
-      <!-- Video 360 -->
-      <video id="paunoVideo" src="LPauno.mp4" autoplay loop="true" crossorigin="anonymous" playsinline webkit-playsinline></video>
+<head>
+  <meta charset="utf-8">
+  <title>Wisata VR 360° - Pantai Lambangan Pauno</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
 
-      <!-- Sphere background pakai video -->
-      <a-videosphere src="#paunoVideo"></a-videosphere>
+    /* Overlay info */
+    .overlay {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.5);
+      padding: 15px 20px;
+      border-radius: 12px;
+      color: #fff;
+      max-width: 350px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 2;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .overlay h1 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: #ffdd57;
+    }
+    .overlay p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
 
-      <!-- Kamera pengguna -->
-      <a-entity camera look-controls></a-entity>
-    </a-scene>
-  </body>
+    /* Footer */
+    .footer {
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      background: rgba(0,0,0,0.4);
+      padding: 6px 12px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 12px;
+      z-index: 2;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay Informasi -->
+  <div class="overlay">
+    <h1>🌊 Pantai Lambangan Pauno</h1>
+    <p>
+      Selamat datang di Pantai Lambangan Pauno, surga tersembunyi di Luwuk Banggai 🌴.<br>
+      Pantai ini menawarkan air laut jernih, pasir putih lembut,<br>
+      serta panorama alam yang menenangkan jiwa.<br>
+      Cocok untuk wisata bahari, snorkeling, atau sekadar menikmati sunset.
+    </p>
+  </div>
+
+  <!-- Footer Lokasi -->
+  <div class="footer">📍 Luwuk Banggai, Sulawesi Tengah</div>
+
+  <!-- VR Scene -->
+  <a-scene>
+    <!-- Video 360 MP4 aman untuk desktop & mobile -->
+    <video id="paunoVideo" src="assets/LPauno.mp4" autoplay loop muted crossorigin="anonymous" playsinline webkit-playsinline></video>
+
+    <!-- Sphere 360° pakai video -->
+    <a-videosphere src="#paunoVideo"></a-videosphere>
+
+    <!-- Kamera dengan kontrol look-around -->
+    <a-entity camera look-controls position="0 1.6 0"></a-entity>
+  </a-scene>
+</body>
 </html>
-
