@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Wisata VR 360 - Pantai Lambangan Pauno</title>
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  </head>
-  <body>
-    <a-scene>
-      <!-- Load video -->
-      <video id="paunoVideo" autoplay loop="true" src="LPauno.mp4" crossorigin="anonymous"></video>
-
-      <!-- 360 Video as Sky -->
-      <a-videosphere src="#paunoVideo"></a-videosphere>
-
-      <!-- Camera -->
-      <a-entity camera look-controls></a-entity>
-    </a-scene>
-  </body>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <title>Wisata VR 360 - Senggigi Lombok</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Embed video 360 YouTube -->
+  <iframe
+    src="https://www.youtube.com/embed/pWw78NhJJwQ?rel=0&showinfo=0&autoplay=1&loop=1"
+    allow="fullscreen; vr"
+    allowfullscreen>
+  </iframe>
+</body>
 </html>
