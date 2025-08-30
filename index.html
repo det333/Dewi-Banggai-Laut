@@ -1,76 +1,53 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <title>Wisata VR 360° - DEWI Laut Banggai</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wisata VR 360° - Pantai Lambangan Pauno</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0c91f2">
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-youtube-component/dist/aframe-youtube-component.min.js"></script>
   <style>
-    /* Gaya CSS untuk elemen-elemen di halaman */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
-    #map {
-      width: 100%;
-      height: 100vh;
-    }
+    html, body { margin:0; padding:0; overflow:hidden; font-family:Arial, sans-serif; }
     .overlay {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 15px;
-      border-radius: 10px;
-      color: white;
-      max-width: 300px;
-      z-index: 2;
+      position:absolute; top:20px; left:20px; background:rgba(0,0,0,0.5);
+      padding:15px 20px; border-radius:12px; color:#fff; max-width:350px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.4); z-index:2; animation:fadeIn 2s ease-in-out;
     }
-    .overlay h1 {
-      margin: 0;
-      font-size: 18px;
-      color: #ffdd57;
-    }
-    .overlay p {
-      margin: 5px 0;
-      font-size: 14px;
-    }
+    .overlay h1 { margin:0 0 10px; font-size:22px; color:#ffdd57; }
+    .overlay p { margin:0; font-size:14px; line-height:1.4; }
+    .footer { position:absolute; bottom:15px; right:20px; background:rgba(0,0,0,0.4);
+      padding:6px 12px; border-radius:8px; color:#fff; font-size:12px; z-index:2; }
+    .button { display:inline-block; margin-top:10px; padding:6px 12px; border-radius:6px;
+      background:#ffdd57; color:#000; cursor:pointer; font-weight:bold; font-size:13px; }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
   </style>
 </head>
 <body>
-  <div id="map"></div>
+
+  <!-- Overlay Informasi -->
   <div class="overlay">
-    <h1>🌊 Pantai Lambangan Pauno</h1>
-    <p>Selamat datang di Pantai Lambangan Pauno, surga tersembunyi di Luwuk Banggai 🌴. Nikmati keindahan alamnya melalui peta interaktif ini.</p>
+    <h1>🌊 DEWI Laut - Banggai Laut</h1>
+    <p>
+      Selamat datang di Banggai Laut, surga bahari Sulawesi Tengah 🌴.<br>
+      Nikmati keindahan Pantai Lambangan Pauno, pasir putih dan air jernih.<br>
+      Temukan destinasi lainnya seperti Pulau Dua, Pulau Labengki, dan Pantai Buka.
+    </p>
+    <div class="button" onclick="alert('Kunjungi website DEWI Laut: https://det333.github.io/Dewi-Banggai-Laut/')">
+      🌐 Info Lengkap DEWI Laut
+    </div>
   </div>
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    // Inisialisasi peta menggunakan Leaflet
-    var map = L.map('map').setView([-1.5710066, 123.5546648], 15); // Koordinat Pantai Lambangan Pauno
+  <!-- Footer Lokasi -->
+  <div class="footer">📍 Luwuk Banggai, Sulawesi Tengah</div>
 
-    // Menambahkan layer peta dari OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+  <!-- VR Scene -->
+  <a-scene>
+    <!-- YouTube 360° Video Sphere -->
+    <a-videosphere youtube="src: pWw78NhJJwQ; autoplay: true; loop: true"></a-videosphere>
 
-    // Menambahkan marker untuk Pantai Lambangan Pauno
-    var marker = L.marker([-1.5710066, 123.5546648]).addTo(map);
-    marker.bindPopup("<b>Pantai Lambangan Pauno</b><br>Tempat wisata dengan pemandangan alam yang memukau.");
+    <!-- Kamera dengan kontrol look-around -->
+    <a-entity camera look-controls position="0 1.6 0"></a-entity>
+  </a-scene>
 
-    // Menambahkan foto-foto ke dalam peta
-    var photos = [
-      { src: 'foto1.jpg', lat: -1.570, lon: 123.555 },
-      { src: 'foto2.jpg', lat: -1.572, lon: 123.553 },
-      // Tambahkan foto lainnya sesuai kebutuhan
-    ];
-
-    photos.forEach(function(photo) {
-      L.marker([photo.lat, photo.lon]).addTo(map)
-        .bindPopup("<img src='" + photo.src + "' width='200' alt='Foto Pantai'>");
-    });
-  </script>
 </body>
 </html>
