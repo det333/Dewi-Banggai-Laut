@@ -5,7 +5,6 @@
   <title>Wisata VR 360° - DEWI Laut Banggai</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-youtube-component/dist/aframe-youtube-component.min.js"></script>
   <style>
     html, body { margin:0; padding:0; overflow:hidden; font-family:Arial, sans-serif; }
     .overlay {
@@ -24,28 +23,28 @@
 </head>
 <body>
 
-  <!-- Overlay Informasi -->
   <div class="overlay">
     <h1>🌊 DEWI Laut - Banggai Laut</h1>
     <p>
       Selamat datang di Banggai Laut, surga bahari Sulawesi Tengah 🌴.<br>
-      Nikmati keindahan Pantai Lambangan Pauno, pasir putih dan air jernih.<br>
-      Temukan destinasi lainnya seperti Pulau Dua, Pulau Labengki, dan Pantai Buka.
+      Nikmati keindahan Pantai Lambangan Pauno dan destinasi lainnya.<br>
+      Video ini aman dan bebas hak cipta, siap dijelajahi dalam VR 360°.
     </p>
-    <div class="button" onclick="alert('Kunjungi website DEWI Laut: https://det333.github.io/Dewi-Banggai-Laut/')">
-      🌐 Info Lengkap DEWI Laut
+    <div class="button" onclick="alert('Selamat menikmati tur virtual DEWI Laut!')">
+      🚀 Mulai Tur VR 360°
     </div>
   </div>
 
-  <!-- Footer Lokasi -->
   <div class="footer">📍 Luwuk Banggai, Sulawesi Tengah</div>
 
-  <!-- VR Scene -->
   <a-scene>
-    <!-- YouTube 360° Video Sphere -->
-    <a-videosphere youtube="src: pWw78NhJJwQ; autoplay: true; loop: true"></a-videosphere>
+    <a-assets>
+      <!-- Pakai video lokal LPauno.mp4 -->
+      <video id="pantaiVideo" src="assets/LPauno.mp4" autoplay loop muted playsinline webkit-playsinline></video>
+    </a-assets>
 
-    <!-- Kamera dengan kontrol look-around -->
+    <a-videosphere src="#pantaiVideo"></a-videosphere>
+
     <a-entity camera look-controls position="0 1.6 0"></a-entity>
   </a-scene>
 
